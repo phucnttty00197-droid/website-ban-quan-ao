@@ -1,4 +1,52 @@
 package com.example.demo.Model;
 
+import jakarta.persistence.*;
+import lombok.*;
+import org.springframework.core.annotation.Order;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+@Entity
+@Data
+@AllArgsConstructor
+@Builder
+@NoArgsConstructor
+@Table(name ="accounts")
 public class Account {
+
+    @Id
+    @Column(name = "username")
+    private String username;
+
+    @Column(length = 255, nullable = false, name ="password")
+    private String password;
+
+    @Column(name ="fullname", length = 255, nullable = false)
+    private String fullname;
+
+    @Column(name ="email", length = 100, nullable = false)
+    private String email;
+
+    @Column(name = "photo", length = 255)
+    private String photo;
+
+    @Column(name ="activated", nullable = false)
+    private Boolean activated;
+
+
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "account")
+    @Builder.Default
+    private List<Auth> authorities = new ArrayList<>();
+
+    @PrePersist
+    private void applyDefaults() {
+        if (activated == null) {
+            activated = true;
+        }
+    }
+
 }
