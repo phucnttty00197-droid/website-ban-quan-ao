@@ -1,8 +1,7 @@
-package com.example.demo.Model;
+package com.example.demo.Model.user;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.core.annotation.Order;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +39,7 @@ public class Account {
     @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "account")
     @Builder.Default
-    private List<Auth> authorities = new ArrayList<>();
+    private List<Authority> authorities = new ArrayList<>();
 
     @PrePersist
     private void applyDefaults() {

@@ -1,6 +1,6 @@
-package com.example.demo.Repository;
+package com.example.demo.Repository.user;
 
-import com.example.demo.Model.Account;
+import com.example.demo.Model.user.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

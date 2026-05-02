@@ -1,25 +1,25 @@
-package com.example.demo.Repository;
+package com.example.demo.Repository.user;
 
-import com.example.demo.Model.Auth;
+import com.example.demo.Model.user.Authority;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface AuthRepo extends JpaRepository<Auth, Long> {
+public interface AuthorityRepo extends JpaRepository<Authority, Long> {
     boolean existsByAccountUsernameAndRoleId(String username, String roleId);
 
-    List<Auth> findByAccountUsername(String username);
+    List<Authority> findByAccountUsername(String username);
 
     @Query("""
             select a
-            from Auth a
+            from Authority a
             join fetch a.account acc
             join fetch a.role r
             where r.id = :roleId
             """)
-    List<Auth> findByRoleId(@Param("roleId") String roleId);
+    List<Authority> findByRoleId(@Param("roleId") String roleId);
 
     void deleteByAccountUsername(String username);
 }

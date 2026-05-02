@@ -1,4 +1,4 @@
-package com.example.demo.Model;
+package com.example.demo.Model.user;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -10,7 +10,7 @@ import lombok.*;
 @Entity
 @Table(name ="authorities")
 @Builder
-public class Auth {
+public class Authority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="id")

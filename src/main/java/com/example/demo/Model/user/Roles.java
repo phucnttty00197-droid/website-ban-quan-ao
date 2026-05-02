@@ -1,4 +1,4 @@
-package com.example.demo.Model;
+package com.example.demo.Model.user;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -25,5 +25,5 @@ public class Roles {
     @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "role")
     @Builder.Default
-    private List<Auth> auth = new ArrayList<>();
+    private List<Authority> auth = new ArrayList<>();
 }
