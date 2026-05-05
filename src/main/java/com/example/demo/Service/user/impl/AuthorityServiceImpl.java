@@ -1,4 +1,4 @@
-package com.example.demo.Service.user.Impl;
+package com.example.demo.Service.user.impl;
 
 import com.example.demo.Model.user.Authority;
 import com.example.demo.Repository.user.AuthorityRepo;

@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.List;
 
-@Service
-public interface ProductsService extends Repository<Products, Integer> {
-    List<Products> findTop8ByOrderByCreateDateDesc();
-    List<Products> findTop8ByDiscountGreaterThanOrderByDiscountDesc(BigDecimal discount);
-    List<Products>
-
-}
+//@Service
+//public interface ProductsService extends Repository<Products, Integer> {
+//    List<Products> findTop8ByOrderByCreateDateDesc();
+//    List<Products> findTop8ByDiscountGreaterThanOrderByDiscountDesc(BigDecimal discount);
+//    List<Products>
+//
+//}
