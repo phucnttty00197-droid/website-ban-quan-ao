@@ -17,4 +17,7 @@ public interface ProductsRepository extends JpaRepository<Products, Integer> {
 
     @Query("select p from Products p join p.orderDetails od group by p order by sum(od.quantity) desc ")
     List<Products> findBestSellers(Pageable pageable);
+
+
+
 }
