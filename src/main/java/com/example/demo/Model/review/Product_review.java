@@ -9,6 +9,9 @@ import lombok.*;
 import org.apache.catalina.User;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,11 +29,11 @@ public class Product_review {
     @JoinColumn(name = "username")
     private Account account;
 
-//    @ToString.Exclude
-//    @EqualsAndHashCode.Exclude
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "order_id")
-//    private Orders order;
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    private Orders order;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
@@ -38,5 +41,23 @@ public class Product_review {
     @JoinColumn(name = "product_id")
     private Products product;
 
+    @Column(nullable = false)
+    private Integer starRating;
+
+    @Column(length = 2000)
+    private String reviewContent;
+
+    @Column(length = 2000)
+    private String images;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @PrePersist
+    private void applyDefaults() {
+        if (createdAt == null) {
+            createdAt = LocalDateTime.now();
+        }
+    }
 
 }
