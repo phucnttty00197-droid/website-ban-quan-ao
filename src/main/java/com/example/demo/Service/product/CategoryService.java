@@ -1,5 +1,6 @@
 package com.example.demo.Service.product;
 
+import com.example.demo.Model.product.Categories;
 import jdk.jfr.Category;
 import org.springframework.data.repository.Repository;
 import org.springframework.stereotype.Service;
@@ -9,9 +10,9 @@ import java.util.Optional;
 
 
 public interface CategoryService  {
-    List<Category> findAll();
-    Optional<Category> findById(String id);
-    Category create(Category category);
-    Category update(Category category);
+    List<Categories> findAll();
+    Optional<Categories> findById(String id);
+    Categories create(Categories category);
+    Categories update(Categories category);
     void deleteById(String id);
 }
