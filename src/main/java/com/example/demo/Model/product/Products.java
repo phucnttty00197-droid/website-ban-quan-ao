@@ -47,7 +47,7 @@ public class Products extends BaseEntity {
     @EqualsAndHashCode.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
-    private Categories categories;
+    private Categories category;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
