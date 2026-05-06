@@ -1,9 +1,7 @@
 package com.example.demo.Model.product;
 
-import com.example.demo.Model.Order_details;
 import com.example.demo.Model.common.BaseEntity;
 import jakarta.persistence.*;
-import jdk.jfr.Category;
 import lombok.*;
 
 import java.math.BigDecimal;

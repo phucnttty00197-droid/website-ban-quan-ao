@@ -1,8 +1,8 @@
 package com.example.demo.Service;
 
 import com.example.demo.Model.user.Account;
-import com.example.demo.Model.Notifications;
-import com.example.demo.Model.Orders;
+import com.example.demo.Model.notification.Notifications;
+import com.example.demo.Model.order.Orders;
 
 import java.util.List;
 import java.util.Optional;

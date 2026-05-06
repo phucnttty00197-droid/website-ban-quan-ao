@@ -1,12 +1,9 @@
-package com.example.demo.Model;
+package com.example.demo.Model.notification;
 
 import com.example.demo.Model.user.Account;
 import jakarta.persistence.*;
 import lombok.*;
-import org.apache.catalina.User;
-import org.springframework.stereotype.Controller;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data

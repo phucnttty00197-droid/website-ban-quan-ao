@@ -1,7 +1,6 @@
 package com.example.demo.Service.review.impl;
 
-import com.example.demo.Model.Orders;
-import com.example.demo.Model.product.Product_size;
+import com.example.demo.Model.order.Orders;
 import com.example.demo.Model.product.Products;
 import com.example.demo.Model.review.Product_review;
 import com.example.demo.Model.user.Account;

@@ -1,6 +1,6 @@
 package com.example.demo.Repository.notification;
 
-import com.example.demo.Model.Notifications;
+import com.example.demo.Model.notification.Notifications;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -1,7 +1,6 @@
 package com.example.demo.Controller.web;
 
 
-import com.example.demo.Model.Cart_items;
 import com.example.demo.Service.auth.AuthService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;

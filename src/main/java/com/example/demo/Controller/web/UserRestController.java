@@ -1,7 +1,7 @@
 package com.example.demo.Controller.web;
 
-import com.example.demo.DTO.AccountDTO;
-import com.example.demo.DTO.AccountRequestDTO;
+import com.example.demo.DTO.user.AccountDTO;
+import com.example.demo.DTO.user.AccountRequestDTO;
 import com.example.demo.Model.user.Account;
 import com.example.demo.Service.user.AccountService;
 import lombok.RequiredArgsConstructor;
