@@ -1,6 +1,7 @@
 package com.example.demo.Model.product;
 
 import com.example.demo.Model.common.BaseEntity;
+import com.example.demo.Model.order.Order_details;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -48,11 +49,11 @@ public class Products extends BaseEntity {
     @JoinColumn(name = "category_id")
     private Categories categories;
 
-//    @ToString.Exclude
-//    @EqualsAndHashCode.Exclude
-//    @OneToMany(mappedBy = "product")
-//    @Builder.Default
-//    private List<Order_details> orderDetails = new ArrayList<>();
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "product")
+    @Builder.Default
+    private List<Order_details> orderDetails = new ArrayList<>();
 
 
     @ToString.Exclude
