@@ -4,7 +4,7 @@ import com.example.demo.Model.order.Orders;
 import com.example.demo.Model.product.Products;
 import com.example.demo.Model.review.Product_review;
 import com.example.demo.Model.user.Account;
-import com.example.demo.Repository.review.ProductReviewStats;
+import com.example.demo.repository.review.ProductReviewStats;
 
 import java.util.List;
 import java.util.Set;

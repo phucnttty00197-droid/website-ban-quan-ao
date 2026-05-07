@@ -1,4 +1,4 @@
-package com.example.demo.Repository.order;
+package com.example.demo.repository.order;
 
 import com.example.demo.Model.order.Order_details;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 public interface OrderDetailRepository extends JpaRepository<Order_details, Long> {

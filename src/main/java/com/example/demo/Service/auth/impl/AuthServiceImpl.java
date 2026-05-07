@@ -1,7 +1,7 @@
 package com.example.demo.Service.auth.impl;
 
 import com.example.demo.Model.user.Account;
-import com.example.demo.Repository.user.AuthorityRepo;
+import com.example.demo.repository.user.AuthorityRepo;
 import com.example.demo.Service.auth.AuthService;
 import com.example.demo.Service.user.AccountService;
 import jakarta.servlet.http.HttpSession;

@@ -1,7 +1,7 @@
 package com.example.demo.Service.product.impl;
 
 import com.example.demo.Model.product.Product_size;
-import com.example.demo.Repository.products.ProductSizeRepository;
+import com.example.demo.repository.product.ProductSizeRepository;
 import com.example.demo.Service.product.ProductSizeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

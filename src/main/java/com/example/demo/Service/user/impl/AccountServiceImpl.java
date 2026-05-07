@@ -1,7 +1,7 @@
 package com.example.demo.Service.user.impl;
 
 import com.example.demo.Model.user.Account;
-import com.example.demo.Repository.user.AccountRepo;
+import com.example.demo.repository.user.AccountRepo;
 import com.example.demo.Service.user.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 package com.example.demo.Service.user.impl;
 
 import com.example.demo.Model.user.Roles;
-import com.example.demo.Repository.user.RolesRepo;
+import com.example.demo.repository.user.RolesRepo;
 import com.example.demo.Service.user.RoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

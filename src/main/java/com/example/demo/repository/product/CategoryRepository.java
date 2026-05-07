@@ -1,4 +1,4 @@
-package com.example.demo.Repository.products;
+package com.example.demo.repository.product;
 
 import com.example.demo.Model.product.Categories;
 

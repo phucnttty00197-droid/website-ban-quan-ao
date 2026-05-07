@@ -1,4 +1,4 @@
-package com.example.demo.Repository.review;
+package com.example.demo.repository.review;
 
 public interface ProductReviewStats {
     Double getAvgRating();

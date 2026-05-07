@@ -1,4 +1,4 @@
-package com.example.demo.Repository.notification;
+package com.example.demo.repository.notification;
 
 import com.example.demo.Model.notification.Notifications;
 import org.springframework.data.jpa.repository.JpaRepository;
