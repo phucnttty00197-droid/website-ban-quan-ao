@@ -1,4 +1,4 @@
-package com.example.demo.Repository.review;
+package com.example.demo.repository.review;
 
 import com.example.demo.Model.review.Product_review;
 import org.springframework.data.jpa.repository.JpaRepository;

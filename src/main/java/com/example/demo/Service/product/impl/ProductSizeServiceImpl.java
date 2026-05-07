@@ -1,7 +1,7 @@
 package com.example.demo.Service.product.impl;
 
 import com.example.demo.Model.product.Product_size;
-import com.example.demo.Repository.products.ProductSizeRepository;
+
 import com.example.demo.Service.product.ProductSizeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,9 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class ProductSizeServiceImpl implements ProductSizeService {
-    private final ProductSizeRepository productSizeRepository;
+    private final com.example.demo.repository.product.ProductSizeRepository productSizeRepository;
+
+
 
     @Override
     public List<Product_size> findByProductId(Integer productId) {

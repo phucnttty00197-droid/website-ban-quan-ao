@@ -1,7 +1,7 @@
 package com.example.demo.Service.user.impl;
 
 import com.example.demo.Model.user.Authority;
-import com.example.demo.Repository.user.AuthorityRepo;
+import com.example.demo.repository.user.AuthorityRepo;
 
 import com.example.demo.Service.user.AuthorityService;
 import lombok.RequiredArgsConstructor;

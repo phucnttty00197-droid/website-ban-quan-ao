@@ -1,4 +1,4 @@
-package com.example.demo.Repository.order;
+package com.example.demo.repository.order;
 
 import com.example.demo.Model.order.Orders;
 import org.springframework.data.domain.Pageable;
