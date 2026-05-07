@@ -1,10 +1,7 @@
 package com.example.demo.Service.product.impl;
 
-import com.example.demo.Model.product.Product_size;
 import com.example.demo.Model.product.Products;
-import com.example.demo.Repository.products.CategoryRepository;
-import com.example.demo.Repository.products.ProductSizeRepository;
-import com.example.demo.Repository.products.ProductsRepository;
+import com.example.demo.repository.product.ProductsRepository;
 import com.example.demo.Service.product.ProductSizeService;
 import com.example.demo.Service.product.ProductsService;
 import lombok.RequiredArgsConstructor;
