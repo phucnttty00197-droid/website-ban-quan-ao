@@ -1,4 +1,4 @@
-package com.example.demo.repository.products;
+package com.example.demo.repository.product;
 
 import com.example.demo.Model.product.Sizes;
 import org.springframework.data.jpa.repository.JpaRepository;
