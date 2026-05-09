@@ -44,6 +44,7 @@ public class ProductServiceImpl implements ProductsService {
         product.ifPresent(this::attachSizes);
         return product;
     }
+
     @Override
     public List<Products> findTop8ByOrderByCreateDateDesc() {
         List<Products> products = productRepository.findTop8ByOrderByCreateDateDesc();
@@ -88,10 +89,10 @@ public class ProductServiceImpl implements ProductsService {
 
     @Override
     public List<Products> searchWithFilters(String keyword,
-                                           String categoryId,
-                                           BigDecimal minPrice,
-                                           BigDecimal maxPrice,
-                                           String sort) {
+                                            String categoryId,
+                                            BigDecimal minPrice,
+                                            BigDecimal maxPrice,
+                                            String sort) {
         String keywordValue = keyword != null ? keyword.trim() : null;
         String categoryValue = categoryId != null ? categoryId.trim() : null;
         List<Products> products;
@@ -105,14 +106,15 @@ public class ProductServiceImpl implements ProductsService {
         attachSizes(products);
         return products;
     }
+
     @Override
     public Page<Products> searchWithFiltersPage(String keyword,
-                                               String categoryId,
-                                               BigDecimal minPrice,
-                                               BigDecimal maxPrice,
-                                               String sort,
-                                               int page,
-                                               int size) {
+                                                String categoryId,
+                                                BigDecimal minPrice,
+                                                BigDecimal maxPrice,
+                                                String sort,
+                                                int page,
+                                                int size) {
         String keywordValue = keyword != null ? keyword.trim() : null;
         String categoryValue = categoryId != null ? categoryId.trim() : null;
         PageRequest pageRequest;
