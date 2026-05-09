@@ -1,4 +1,4 @@
-package com.example.demo.repository.products;
+package com.example.demo.repository.product;
 
 import com.example.demo.Model.product.Products;
 import org.springframework.data.domain.Page;

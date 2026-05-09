@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+
 public interface ProductsService  {
     List<Products> findAll();
     Page<Products> findAllPage(int page, int size);
