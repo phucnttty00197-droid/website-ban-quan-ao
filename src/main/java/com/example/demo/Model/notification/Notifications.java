@@ -1,5 +1,6 @@
 package com.example.demo.Model.notification;
 
+import com.example.demo.Model.order.Orders;
 import com.example.demo.Model.user.Account;
 import jakarta.persistence.*;
 import lombok.*;
@@ -23,6 +24,8 @@ public class Notifications {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "username")
     private Account account;
+
+
 
     @Column(length = 200, nullable = false)
     private String title;
