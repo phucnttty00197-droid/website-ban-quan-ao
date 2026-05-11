@@ -7,9 +7,7 @@ import com.example.demo.Service.product.CategoryService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
-import java.util.List;
 
 @ControllerAdvice
 @RequiredArgsConstructor
