@@ -23,7 +23,7 @@ public class Categories {
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "categories")
+    @OneToMany(mappedBy = "category")
     private List<Products> products = new ArrayList<>();
 
 }

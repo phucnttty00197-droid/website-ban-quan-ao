@@ -37,7 +37,7 @@ public class Orders extends BaseEntity {
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "orders")
+    @OneToMany(mappedBy = "order")
     @Builder.Default
     private List<Order_details> orderDetails = new ArrayList<>();
 

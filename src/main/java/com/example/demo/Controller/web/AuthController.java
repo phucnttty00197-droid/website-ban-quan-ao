@@ -28,7 +28,7 @@ public class AuthController {
                          @RequestParam("password") String password,
                          Model model){
         boolean ok = authService.login(username, password);
-        if (ok) {
+        if (!ok) {
             model.addAttribute("message", "Sai tài khoản hoặc mật khẩu!");
             return "auth/login";
         }
