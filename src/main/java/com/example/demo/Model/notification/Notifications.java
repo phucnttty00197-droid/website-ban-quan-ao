@@ -24,15 +24,11 @@ public class Notifications {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "username")
     private Account account;
-
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private Orders order;
-
-
-
     @Column(length = 200, nullable = false)
     private String title;
 
