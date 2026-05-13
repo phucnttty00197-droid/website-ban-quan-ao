@@ -16,7 +16,7 @@ public interface CartService {
     /**
      * Get current cart items (session cart if anonymous, DB cart if logged-in).
      */
-    List<Cart_items> getCartItems();
+    List<Cartltem> getCartItems();
 
     /**
      * Merge anonymous session cart into user DB cart (only called after login success).
@@ -48,7 +48,7 @@ public interface CartService {
 
     void clear();
 
-    List<Cart_items> getItems();
+    List<Cartltem> getItems();
 
     BigDecimal getTotalPrice();
 
