@@ -20,7 +20,7 @@ public interface CartItemRepository extends JpaRepository<Cart_items,Long> {
             """)
     List<Cart_items> findByUsernameWithRefs(@Param("username") String username);
 
-    Optional<Cart_items> findByAccountUsernameAndProductIdAndSizeId(String username, Integer productId, Integer sizeId);
+    Optional<Cart_items> findByAccountUsernameAndProductIdAndSizesId(String username, Integer productId, Integer sizeId);
     @Query("""
             select count(distinct ci.product.id)
             from Cart_items ci

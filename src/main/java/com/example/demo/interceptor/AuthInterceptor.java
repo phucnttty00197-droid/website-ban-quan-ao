@@ -16,7 +16,7 @@ import java.util.List;
 public class AuthInterceptor implements HandlerInterceptor {
     private static final String REDIRECT_AFTER_LOGIN = "REDIRECT_AFTER_LOGIN";
     private static final List<String> PROTECTED_PREFIXES = List.of(
-             "/account/", "/admin/"
+            "/order/",  "/account/", "/admin/"
     );
     private final AuthService authService;
     private final HttpSession session;
@@ -24,7 +24,15 @@ public class AuthInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String uri = request.getRequestURI();
-        boolean protectedPath = PROTECTED_PREFIXES.stream().anyMatch(uri::startsWith);
+        boolean protectedPath =
+                uri.equals("/") ||
+                        uri.startsWith("/home") ||
+                        uri.startsWith("/product/") ||
+                        uri.startsWith("/auth/") ||
+                        uri.startsWith("/css/") ||
+                        uri.startsWith("/js/") ||
+                        uri.startsWith("/images/") ||
+                        uri.startsWith("/error");
         if (protectedPath) {
             return true;
         }

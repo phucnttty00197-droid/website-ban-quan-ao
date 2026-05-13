@@ -116,7 +116,7 @@ public class CartltemImpl implements CartService {
     @Override
     public void remove(Integer productId, Integer sizeId) {
         if (isAuthenticated()) {
-            cartItemRepository.findByAccountUsernameAndProductIdAndSizeId(authService.getUser().getUsername(), productId, sizeId)
+            cartItemRepository.findByAccountUsernameAndProductIdAndSizesId(authService.getUser().getUsername(), productId, sizeId)
                     .ifPresent(cartItemRepository::delete);
             return;
         }
@@ -140,7 +140,7 @@ public class CartltemImpl implements CartService {
         }
 
         if (isAuthenticated()) {
-            var opt = cartItemRepository.findByAccountUsernameAndProductIdAndSizeId(authService.getUser().getUsername(), productId, sizeId);
+            var opt = cartItemRepository.findByAccountUsernameAndProductIdAndSizesId(authService.getUser().getUsername(), productId, sizeId);
             if (opt.isEmpty()) {
                 return false;
             }
@@ -283,7 +283,7 @@ public class CartltemImpl implements CartService {
         }
         int stock = productSize.get().getQuantity();
 
-        var existingOpt = cartItemRepository.findByAccountUsernameAndProductIdAndSizeId(username, productId, sizeId);
+        var existingOpt = cartItemRepository.findByAccountUsernameAndProductIdAndSizesId(username, productId, sizeId);
         if (existingOpt.isPresent()) {
             var existing = existingOpt.get();
             int next = (existing.getQuantity() != null ? existing.getQuantity() : 0) + quantity;
@@ -325,7 +325,7 @@ public class CartltemImpl implements CartService {
         }
         int stock = productSize.get().getQuantity();
 
-        var existingOpt = cartItemRepository.findByAccountUsernameAndProductIdAndSizeId(username, productId, sizeId);
+        var existingOpt = cartItemRepository.findByAccountUsernameAndProductIdAndSizesId(username, productId, sizeId);
         if (existingOpt.isPresent()) {
             var existing = existingOpt.get();
             int current = existing.getQuantity() != null ? existing.getQuantity() : 0;

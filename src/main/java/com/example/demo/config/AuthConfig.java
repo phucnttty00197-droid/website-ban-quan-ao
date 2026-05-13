@@ -24,7 +24,10 @@ public class AuthConfig implements WebMvcConfigurer {
                         "/images/**",
                         "/css/**",
                         "/js/**",
-                        "/error"
+                        "/error",
+                        "/",
+                        "/home",
+                        "/product/**"
                 );
     }
 }
