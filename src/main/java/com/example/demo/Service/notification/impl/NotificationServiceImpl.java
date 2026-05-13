@@ -105,7 +105,7 @@ public class NotificationServiceImpl implements NotificationService {
         if (orderId == null) {
             return;
         }
-
+notificationRepository.deleteByOrderId(orderId);
     }
 }
 
