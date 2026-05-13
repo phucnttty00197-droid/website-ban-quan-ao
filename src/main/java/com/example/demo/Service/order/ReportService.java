@@ -16,3 +16,4 @@ public interface ReportService {
     List<VipReport> top10VipCustomers();
 
 }
+

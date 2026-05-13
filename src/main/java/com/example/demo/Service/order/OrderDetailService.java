@@ -20,6 +20,5 @@ public interface OrderDetailService {
     void deleteById(Long id);
 
     void deleteByOrderId(Long orderId);
-
     List<Order_details> findByOrderAccountUsername(String username);
 }
