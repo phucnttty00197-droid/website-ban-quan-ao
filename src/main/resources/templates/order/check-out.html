@@ -94,89 +94,113 @@
         const mapEl = document.getElementById('checkoutMap');
 
         const addressData = {
-            'Gia Lai': [
-                // Quy Nhơn
-                'Phường Quy Nhơn',
-                'Phường Quy Nhơn Đông',
-                'Phường Quy Nhơn Tây',
-                'Phường Quy Nhơn Nam',
-                'Phường Quy Nhơn Bắc',
-                'Xã Nhơn Châu',
+            'Hải Dương': [
+                // TP Hải Dương
+                'Phường Trần Phú',
+                'Phường Ngọc Châu',
+                'Phường Lê Thanh Nghị',
+                'Phường Quang Trung',
+                'Phường Hải Tân',
+                'Phường Tân Bình',
+                'Phường Bình Hàn',
+                'Phường Thanh Bình',
+                'Phường Nhị Châu',
+                'Phường Việt Hòa',
 
-                // An Nhơn
-                'Phường Bình Định',
-                'Phường An Nhơn',
-                'Phường An Nhơn Đông',
-                'Xã An Nhơn Tây',
-                'Phường An Nhơn Nam',
-                'Phường An Nhơn Bắc',
+                // Chí Linh
+                'Phường Sao Đỏ',
+                'Phường Văn An',
+                'Phường Chí Minh',
+                'Phường Cổ Thành',
+                'Phường Thái Học',
+                'Xã Hoàng Tiến',
+                'Xã Hoàng Hoa Thám',
+                'Xã An Lạc',
+                'Xã Lê Lợi',
 
-                // Hoài Nhơn
-                'Phường Bồng Sơn',
-                'Phường Hoài Nhơn',
-                'Phường Tam Quan',
-                'Phường Hoài Nhơn Đông',
-                'Phường Hoài Nhơn Tây',
-                'Phường Hoài Nhơn Nam',
-                'Phường Hoài Nhơn Bắc',
+                // Kinh Môn
+                'Phường An Lưu',
+                'Phường Hiến Thành',
+                'Phường Phạm Thái',
+                'Xã Thái Sơn',
+                'Xã Minh Hòa',
+                'Xã Duy Tân',
+                'Xã Bạch Đằng',
 
-                // Phù Cát
-                'Xã Phù Cát',
-                'Xã Xuân An',
-                'Xã Ngô Mây',
-                'Xã Cát Tiến',
-                'Xã Đề Gi',
-                'Xã Hòa Hội',
-                'Xã Hội Sơn',
+                // Nam Sách
+                'Thị trấn Nam Sách',
+                'Xã An Bình',
+                'Xã An Lâm',
+                'Xã Hồng Phong',
+                'Xã Quốc Tuấn',
+                'Xã Nam Tân',
+                'Xã Thanh Quang',
 
-                // Phù Mỹ
-                'Xã Phù Mỹ',
-                'Xã An Lương',
-                'Xã Bình Dương',
-                'Xã Phù Mỹ Đông',
-                'Xã Phù Mỹ Tây',
-                'Xã Phù Mỹ Nam',
-                'Xã Phù Mỹ Bắc',
+                // Kim Thành
+                'Thị trấn Phú Thái',
+                'Xã Kim Anh',
+                'Xã Kim Liên',
+                'Xã Kim Tân',
+                'Xã Kim Xuyên',
+                'Xã Tuấn Việt',
 
-                // Tuy Phước
-                'Xã Tuy Phước',
-                'Xã Tuy Phước Đông',
-                'Xã Tuy Phước Tây',
-                'Xã Tuy Phước Bắc',
+                // Thanh Hà
+                'Thị trấn Thanh Hà',
+                'Xã Thanh Xá',
+                'Xã Thanh Lang',
+                'Xã Cẩm Chế',
+                'Xã Hồng Lạc',
+                'Xã Liên Mạc',
 
-                // Tây Sơn
-                'Xã Tây Sơn',
-                'Xã Bình Khê',
-                'Xã Bình Phú',
-                'Xã Bình Hiệp',
-                'Xã Bình An',
+                // Cẩm Giàng
+                'Thị trấn Cẩm Giàng',
+                'Xã Cẩm Điền',
+                'Xã Cẩm Đông',
+                'Xã Cẩm Phúc',
+                'Xã Cẩm Vũ',
+                'Xã Định Sơn',
 
-                // Hoài Ân
-                'Xã Hoài Ân',
-                'Xã Ân Tường',
-                'Xã Kim Sơn',
-                'Xã Vạn Đức',
-                'Xã Ân Hảo',
+                // Bình Giang
+                'Thị trấn Kẻ Sặt',
+                'Xã Vĩnh Hưng',
+                'Xã Hùng Thắng',
+                'Xã Long Xuyên',
+                'Xã Thái Học',
+                'Xã Bình Xuyên',
 
-                // Vân Canh
-                'Xã Vân Canh',
-                'Xã Canh Vinh',
-                'Xã Canh Liên',
+                // Gia Lộc
+                'Thị trấn Gia Lộc',
+                'Xã Gia Xuyên',
+                'Xã Liên Hồng',
+                'Xã Tân Tiến',
+                'Xã Hoàng Diệu',
+                'Xã Nhật Tân',
 
-                // Vĩnh Thạnh
-                'Xã Vĩnh Thạnh',
-                'Xã Vĩnh Thịnh',
-                'Xã Vĩnh Quang',
-                'Xã Vĩnh Sơn',
+                // Tứ Kỳ
+                'Thị trấn Tứ Kỳ',
+                'Xã Nguyên Giáp',
+                'Xã Quang Phục',
+                'Xã Minh Đức',
+                'Xã Đại Sơn',
+                'Xã Chí Minh',
 
-                // An Lão
-                'Xã An Lão',
-                'Xã An Hòa',
-                'Xã An Vinh',
-                'Xã An Toàn'
+                // Ninh Giang
+                'Thị trấn Ninh Giang',
+                'Xã Hồng Dụ',
+                'Xã Tân Quang',
+                'Xã Ứng Hoè',
+                'Xã Vĩnh Hoà',
+                'Xã Đông Xuyên',
+
+                // Thanh Miện
+                'Thị trấn Thanh Miện',
+                'Xã Cao Thắng',
+                'Xã Chi Lăng Nam',
+                'Xã Thanh Tùng',
+                'Xã Hồng Quang',
+                'Xã Ngô Quyền'
             ]
         };
-
 
 
 
@@ -211,13 +235,21 @@
             populateSelect(wardSelect, addressData[province]);
         }
 
-        provinceSelect.addEventListener('change', loadWards);
+        provinceSelect.addEventListener('change', async () => {
+            loadWards();
+
+            // reset ward trước khi gọi map
+            await new Promise(r => setTimeout(r, 50));
+
+            updateLocation();
+        });
+
+        wardSelect.addEventListener('change', updateLocation);
+
 
         let map = null;
         let marker = null;
-        let geocodeTimer = null;
-        let lastGeocodeQuery = '';
-        let geocodeAbort = null;
+
         let geocodeMessageEl = null;
 
         form.addEventListener('submit', (event) => {
@@ -249,7 +281,7 @@
             geocodeMessageEl.style.display = 'none';
             mapEl.insertAdjacentElement('afterend', geocodeMessageEl);
             map.on('click', (event) => {
-                const { lat, lng } = event.latlng;
+                const {lat, lng} = event.latlng;
                 if (marker) {
                     marker.setLatLng([lat, lng]);
                 } else {
@@ -263,247 +295,61 @@
                 }
             });
         }
+        async function geocodeAddress(query) {
+            const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(query)}`;
 
-        function normalizeLocationName(value) {
-            if (!value) {
-                return '';
-            }
-            return value
-                .replace(/^(TP\.|Thành phố|TX\.|Thị xã|Thị trấn|Phường|Xã)\s*/i, '')
-                .trim();
-        }
+            const res = await fetch(url);
+            const data = await res.json();
 
-        function buildAddressQuery() {
-            const province = provinceSelect.value;
-            const ward = wardSelect.value;
-            if (!province || !ward) {
-                return '';
-            }
-            const parts = [];
-            parts.push(ward);
-            parts.push(province);
-            parts.push('Việt Nam');
-            return parts.join(', ');
-        }
-
-        function buildNormalizedQuery() {
-            const province = provinceSelect.value;
-            const ward = normalizeLocationName(wardSelect.value);
-            if (!province || !ward) {
-                return '';
-            }
-            const parts = [];
-            parts.push(ward);
-            parts.push(province);
-            parts.push('Việt Nam');
-            return parts.join(', ');
-        }
-
-        function buildWardProvinceQuery() {
-            const province = provinceSelect.value;
-            const ward = wardSelect.value;
-            if (!province || !ward) {
-                return '';
-            }
-            return `${ward}, ${province}, Việt Nam`;
-        }
-
-        function buildNormalizedWardProvinceQuery() {
-            const province = provinceSelect.value;
-            const ward = normalizeLocationName(wardSelect.value);
-            if (!province || !ward) {
-                return '';
-            }
-            return `${ward}, ${province}, Việt Nam`;
-        }
-
-        function buildGeocodeUrl(query) {
-            const province = provinceSelect.value;
-            const ward = normalizeLocationName(wardSelect.value);
-            const params = new URLSearchParams();
-            params.set('format', 'jsonv2');
-            params.set('limit', '1');
-            params.set('countrycodes', 'vn');
-            params.set('addressdetails', '1');
-            params.set('accept-language', 'vi');
-            params.set('email', 'demo@local.test');
-            if (ward) {
-                params.set('suburb', ward);
-            }
-            params.set('state', province);
-            params.set('country', 'Vietnam');
-            params.set('q', query);
-            return `https://nominatim.openstreetmap.org/search?${params.toString()}`;
-        }
-
-        function buildSimpleGeocodeUrl(query) {
-            const params = new URLSearchParams();
-            params.set('format', 'jsonv2');
-            params.set('limit', '1');
-            params.set('countrycodes', 'vn');
-            params.set('accept-language', 'vi');
-            params.set('email', 'demo@local.test');
-            params.set('q', query);
-            return `https://nominatim.openstreetmap.org/search?${params.toString()}`;
-        }
-
-        function buildJsonpUrl(query) {
-            const params = new URLSearchParams();
-            params.set('format', 'json');
-            params.set('limit', '1');
-            params.set('countrycodes', 'vn');
-            params.set('accept-language', 'vi');
-            params.set('email', 'demo@local.test');
-            params.set('q', query);
-            return `https://nominatim.openstreetmap.org/search?${params.toString()}`;
-        }
-
-        function jsonpFetch(url) {
-            return new Promise((resolve, reject) => {
-                const callbackName = `__nominatim_cb_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
-                const script = document.createElement('script');
-                const cleanup = () => {
-                    if (script.parentNode) {
-                        script.parentNode.removeChild(script);
-                    }
-                    delete window[callbackName];
+            if (data && data.length > 0) {
+                return {
+                    lat: parseFloat(data[0].lat),
+                    lng: parseFloat(data[0].lon)
                 };
-                window[callbackName] = (data) => {
-                    cleanup();
-                    resolve(data);
-                };
-                script.onerror = () => {
-                    cleanup();
-                    reject(new Error('jsonp_failed'));
-                };
-                const separator = url.includes('?') ? '&' : '?';
-                script.src = `${url}${separator}json_callback=${callbackName}`;
-                document.body.appendChild(script);
-            });
-        }
-
-        function updateMarker(lat, lng) {
-            if (!map || !Number.isFinite(lat) || !Number.isFinite(lng)) {
-                return;
             }
+            return null;
+        }
+        function moveMap(lat, lng) {
+            if (!map) return;
+
             map.setView([lat, lng], 16);
+
             if (marker) {
                 marker.setLatLng([lat, lng]);
             } else {
                 marker = L.marker([lat, lng]).addTo(map);
             }
+
             shippingLat.value = lat.toFixed(6);
             shippingLng.value = lng.toFixed(6);
-            if (geocodeMessageEl) {
-                geocodeMessageEl.style.display = 'none';
-                geocodeMessageEl.textContent = '';
-            }
         }
+        async function updateLocation() {
+            const province = provinceSelect.value;
+            const ward = wardSelect.value;
 
-        function showGeocodeError(message) {
-            if (!geocodeMessageEl) {
-                return;
-            }
-            geocodeMessageEl.textContent = message;
-            geocodeMessageEl.style.display = 'block';
-        }
+            if (!province || !ward) return;
 
-        function uniqueQueries(queries) {
-            const result = [];
-            const seen = new Set();
-            queries.forEach(query => {
-                if (!query || seen.has(query)) {
-                    return;
-                }
-                seen.add(query);
-                result.push(query);
-            });
-            return result;
-        }
+            const query = `${ward}, Hải Dương, Việt Nam`;
 
-        function scheduleGeocode() {
-            const query = buildAddressQuery();
-            if (!query || !map) {
+            const result = await geocodeAddress(query);
+
+            if (result) {
+                moveMap(result.lat, result.lng);
                 if (geocodeMessageEl) {
                     geocodeMessageEl.style.display = 'none';
-                    geocodeMessageEl.textContent = '';
                 }
-                return;
-            }
-            const queryKey = `${provinceSelect.value}|${wardSelect.value}`;
-            if (queryKey === lastGeocodeQuery) {
-                return;
-            }
-            if (geocodeTimer) {
-                clearTimeout(geocodeTimer);
-            }
-            geocodeTimer = setTimeout(() => {
-                lastGeocodeQuery = queryKey;
-                if (geocodeAbort) {
-                    geocodeAbort.abort();
+            } else {
+
+                moveMap(20.9373, 106.3146);
+                if (geocodeMessageEl) {
+                    geocodeMessageEl.textContent = "Không tìm thấy chính xác, đang zoom Hải Dương";
+                    geocodeMessageEl.style.display = 'block';
                 }
-                geocodeAbort = new AbortController();
-                const queries = uniqueQueries([
-                    buildAddressQuery(),
-                    buildNormalizedQuery(),
-                    buildWardProvinceQuery(),
-                    buildNormalizedWardProvinceQuery()
-                ]);
-                if (!queries.length) {
-                    return;
-                }
-                const fetchUrls = [];
-                const jsonpUrls = [];
-                queries.forEach(item => {
-                    fetchUrls.push(buildGeocodeUrl(item));
-                    fetchUrls.push(buildSimpleGeocodeUrl(item));
-                    jsonpUrls.push(buildJsonpUrl(item));
-                });
-                const handleResults = (results) => {
-                    if (Array.isArray(results) && results.length > 0) {
-                        const first = results[0];
-                        const lat = Number.parseFloat(first.lat);
-                        const lng = Number.parseFloat(first.lon);
-                        updateMarker(lat, lng);
-                        return true;
-                    }
-                    return false;
-                };
-                const tryUrls = (urls, fetcher, index = 0) => {
-                    if (index >= urls.length) {
-                        return Promise.resolve(false);
-                    }
-                    return fetcher(urls[index])
-                        .then(results => handleResults(results) ? true : tryUrls(urls, fetcher, index + 1));
-                };
-                const fetcher = (url) => fetch(url, { signal: geocodeAbort.signal })
-                    .then(response => response.ok ? response.json() : Promise.reject(new Error('fetch_failed')));
-                tryUrls(fetchUrls, fetcher)
-                    .then(found => found ? true : tryUrls(jsonpUrls, jsonpFetch))
-                    .then(found => {
-                        if (!found) {
-                            showGeocodeError('Không tìm thấy vị trí theo địa chỉ đã nhập.');
-                        }
-                    })
-                    .catch(error => {
-                        if (error && error.name === 'AbortError') {
-                            return;
-                        }
-                        tryUrls(jsonpUrls, jsonpFetch)
-                            .then(found => {
-                                if (!found) {
-                                    showGeocodeError('Không tìm thấy vị trí theo địa chỉ đã nhập.');
-                                }
-                            })
-                            .catch(() => {
-                                showGeocodeError('Không thể tra cứu vị trí. Vui lòng thử lại sau.');
-                            });
-                    });
-            }, 500);
+            }
         }
 
-        wardSelect.addEventListener('change', scheduleGeocode);
     });
+
 </script>
 
 <div th:replace="layout/layout :: footer"></div>
