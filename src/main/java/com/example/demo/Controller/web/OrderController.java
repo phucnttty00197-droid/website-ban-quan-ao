@@ -81,7 +81,7 @@ public class OrderController {
                 model.addAttribute("totalPrice", cartService.getTotalPrice());
                 return "order/check-out";
             }
-            Optional<Product_size> productSize = productSizeService.findByProductIdAndSizeId(item.getSizeId(), item.getProductId());
+            Optional<Product_size> productSize = productSizeService.findByProductIdAndSizeId(item.getProductId(), item.getSizeId());
             if (productSize.isEmpty() || productSize.get().getQuantity() == null){
                 model.addAttribute("message", "Sản phẩm trong giỏ hàng của bạn hiện đã hết.");
                 model.addAttribute("items", items);
@@ -122,7 +122,7 @@ public class OrderController {
             if (item.getSizeId() == null){
                 continue;
             }
-            Optional<Product_size> productSize = productSizeService.findByProductIdAndSizeId(item.getSizeId(), item.getProductId());
+            Optional<Product_size> productSize = productSizeService.findByProductIdAndSizeId(item.getProductId(),item.getSizeId());
             if (productSize.isEmpty() || productSize.get().getQuantity() < item.getQuantity()){
                 continue;
             }
@@ -143,12 +143,12 @@ public class OrderController {
         }
         cartService.clearCart();
         if ("BANK".equalsIgnoreCase(paymentMethod)){
-            return "redirect:/order/bank-transfer/" +  savedOrder.getId();
+            return "redirect:/order/bank-transfer/view/" + savedOrder.getId();
         }
         return "redirect:/order/detail/" + savedOrder.getId();
     }
 
-    @GetMapping("/order/bank-transfer/{id}")
+    @GetMapping("/order/bank-transfer/view/{id}")
     public String bankTransfer(@PathVariable("id") Long id,
                                @RequestParam(value = "message", required = false) String message,
                                HttpServletRequest request,
@@ -197,12 +197,14 @@ public class OrderController {
             model.addAttribute("bankBin", response.getBin());
             model.addAttribute("paymentLinkId", response.getPaymentLinkId());
         }catch (PayOSException ex){
-            model.addAttribute("message", "Không thể tạo link thanh toán. Vui lòng thử lại!");
+            ex.printStackTrace();
+            model.addAttribute("message", ex.getMessage());
         }
+        model.addAttribute("message", "Thanh toán chưa hoàn tất. Vui lòng chọn phương thức thanh toán khác!");
         return "order/bank-transfer";
     }
     @PostMapping("/order/bank-transfer/confirm")
-    public String confirmBankTransfer(@RequestParam("orderId")Long orderId){
+    public String confirmBankTransfer(@RequestParam("orderId") Long orderId){
         Account user = authService.getUser();
         if (user == null){
             return "redirect:/auth/login";
@@ -225,14 +227,25 @@ public class OrderController {
         }catch (PayOSException ignored){
 
         }
-        String redirectUrl = UriComponentsBuilder.fromPath("/order/bank-transfer/" + orderId)
-                .queryParam("message", "Thanh toán chưa hoàn tất")
+        String redirectUrl = UriComponentsBuilder
+                .fromPath("/order/bank-transfer/view/" + orderId)
+                .queryParam(
+                        "message",
+                        URLEncoder.encode(
+                                "Thanh toán chưa hoàn tất",
+                                StandardCharsets.UTF_8
+                        )
+                )
                 .build()
                 .toUriString();
+
         return "redirect:" + redirectUrl;
     }
-    @PostMapping("/order/bank-transfer/cancel")
-    public String cancelBankTransfer(@RequestParam("orderId")Long orderId){
+
+
+
+    @GetMapping("/order/bank-transfer/cancel/view")
+    public String cancelBankTransferPage(@RequestParam("orderId") Long orderId){
         Account user = authService.getUser();
         if (user == null){
             return "redirect:/auth/login";
@@ -248,19 +261,33 @@ public class OrderController {
                 .toUriString();
         return "redirect:" + redirectUrl;
     }
-    @GetMapping("/order/bank-transfer/cancel")
-    public String cancelBankTransferPage(@RequestParam("orderId") Long orderId, Model model){
+    @PostMapping("/order/bank-transfer/cancel")
+    public String cancelBankTransferAction(@RequestParam("orderId") Long orderId, Model model){
         Account user = authService.getUser();
+
         if (user == null){
             return "redirect:/auth/login";
         }
+
         Optional<Orders> orderOpt = orderService.findById(orderId);
-        if (orderOpt.isEmpty() || orderOpt.get().getAccount() == null
+
+        if (orderOpt.isEmpty()
+                || orderOpt.get().getAccount() == null
                 || !user.getUsername().equals(orderOpt.get().getAccount().getUsername())) {
+
             return "redirect:/order/list";
         }
-        model.addAttribute("order", orderOpt.get());
+
+        Orders order = orderOpt.get();
+
+        List<Order_details> details = orderDetailService.findByOrderId(orderId);
+
+        BigDecimal total = calculateOrderTotal(details);
+
+        model.addAttribute("order", order);
+        model.addAttribute("totalPrice", total);
         model.addAttribute("showCancelPrompt", true);
+
         return "order/bank-transfer";
     }
 
@@ -323,7 +350,7 @@ public class OrderController {
             }
         }catch (PayOSException ignored){
         }
-        String redirectUrl = UriComponentsBuilder.fromPath("/order/bank-transfer/" + orderId)
+        String redirectUrl =UriComponentsBuilder.fromPath("/order/bank-transfer/view/" + orderId)
                 .queryParam("message", "Thanh toán chưa hoàn tất")
                 .build()
                 .toUriString();
@@ -332,7 +359,7 @@ public class OrderController {
 
     @GetMapping("/order/payos/cancel")
     public String payosCancel(@RequestParam("orderId") Long orderId){
-        String redirectUrl = UriComponentsBuilder.fromPath("/order/bank-transfer/cancel")
+        String redirectUrl = UriComponentsBuilder.fromPath("/order/bank-transfer/cancel/view")
                 .queryParam("orderId", orderId)
                 .build()
                 .toUriString();

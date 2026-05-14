@@ -14,11 +14,7 @@ import vn.payos.model.webhooks.WebhookData;
 @Service
 @RequiredArgsConstructor
 public class PayosPaymentServiceImpl implements PayosPaymentService {
-    private final PayOS payOS = new PayOS(
-            "CLIENT_ID",
-            "API_KEY",
-            "CHECKSUM_KEY"
-    );
+    private final PayOS payOS;
     @Override
     public CreatePaymentLinkResponse createPaymentLink(long orderCode, long amount, String description, String returnUrl, String cancelUrl) throws PayOSException {
         CreatePaymentLinkRequest request = CreatePaymentLinkRequest.builder()

@@ -84,24 +84,38 @@
 <div th:replace="layout/layout :: footer"></div>
 <script th:inline="javascript">
   document.addEventListener('DOMContentLoaded', () => {
-    const orderId = /*[[${order.id}]]*/ 0;
-    const hasCheckout = /*[[${checkoutUrl != null}]]*/ false;
-    const showCancelPrompt = /*[[${showCancelPrompt}]]*/ false;
+
+    const hasOrder =  false;
+
+    if (!hasOrder) {
+      return;
+    }
+
+    const orderId =  0;
+    const hasCheckout =  false;
+    const showCancelPrompt = false;
+
     if (!orderId || !hasCheckout || showCancelPrompt) {
       return;
     }
+
     const poll = () => {
-      fetch(`/order/payos/status?orderId=${orderId}`, {headers: {'X-Requested-With': 'XMLHttpRequest'}})
+      fetch(`/order/payos/status?orderId=${orderId}`, {
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      })
               .then(response => response.ok ? response.json() : null)
               .then(data => {
                 if (data && data.redirectUrl) {
                   window.location.href = data.redirectUrl;
                 }
               })
-              .catch(() => {
-              });
+              .catch(() => {});
     };
+
     poll();
+
     setInterval(poll, 5000);
   });
 </script>
