@@ -74,7 +74,7 @@ public class OrderServiceImpl implements OrderService {
         List<Order_details> details = orderDetailService.findByOrderId(orderId);
         for (Order_details detail : details) {
             Integer productId = detail.getProduct() != null ? detail.getProduct().getId() : null;
-            Integer sizeId = detail.getSize_id();
+            Integer sizeId = detail.getSizeId();
             Integer quantity = detail.getQuantity();
             if (productId == null && sizeId == null && quantity == null) {
                 continue;

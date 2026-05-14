@@ -27,10 +27,10 @@ public class Order_details {
     private Integer quantity;
 
     @Column
-    private Integer size_id;
+    private Integer sizeId;
 
     @Column(length = 10)
-    private String size_name;
+    private String sizeName;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude

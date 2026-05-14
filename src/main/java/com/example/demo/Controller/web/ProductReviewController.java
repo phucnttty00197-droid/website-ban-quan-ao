@@ -34,7 +34,7 @@ public class ProductReviewController {
     @PostMapping("/order/review")
     public String create(@RequestParam("orderId") Long orderId,
                          @RequestParam("productId") Integer productId,
-                         @RequestParam("startRating") Integer startRating,
+                         @RequestParam("starRating") Integer startRating,
                          @RequestParam(value = "reviewContent", required = false) String reviewContent,
                          @RequestParam(value = "images", required = false) MultipartFile[] images,
                          RedirectAttributes redirectAttributes) {
@@ -76,7 +76,7 @@ public class ProductReviewController {
         Products product = new Products();
         product.setId(productId);
         productReviewService.createReview(user, product, order, startRating, reviewContent, imageNames);
-        redirectAttributes.addAttribute("reviewMessage", "Đã gửi đánh giá thành công!");
+        redirectAttributes.addFlashAttribute("reviewMessage", "Đã gửi đánh giá thành công!");
         return "redirect:/order/detail/" + orderId;
     }
 

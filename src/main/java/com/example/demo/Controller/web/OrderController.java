@@ -133,8 +133,8 @@ public class OrderController {
             details.setOrder(savedOrder);
             details.setPrice(item.getPrice());
             details.setQuantity(item.getQuantity());
-            details.setSize_id(item.getSizeId());
-            details.setSize_name(item.getSizeName());
+            details.setSizeId(item.getSizeId());
+            details.setSizeName(item.getSizeName());
             orderDetailService.create(details);
 
             Product_size ps = productSize.get();
