@@ -29,11 +29,7 @@ public class Products extends BaseEntity {
     @Column(nullable = false, precision = 12, scale = 2)
     private BigDecimal price;
 
-    @Column(precision = 5, scale = 2)
-    private BigDecimal discount;
 
-    @Column(nullable = false)
-    private Boolean available;
 
     @Column()
     private Integer quantity;
@@ -62,13 +58,11 @@ public class Products extends BaseEntity {
     @Builder.Default
     private List<Product_size> productSizes = new ArrayList<>();
 
-    @PrePersist
-    private void applyDefaults() {
-        if (discount == null) {
-            discount = BigDecimal.ZERO;
-        }
-        if (available != null) {
-            available = true;
-        }
-    }
+    @Column(precision = 5, scale = 2)
+    @Builder.Default
+    private BigDecimal discount = BigDecimal.ZERO;
+
+    @Column(nullable = false)
+    @Builder.Default
+    private Boolean available = true;
 }

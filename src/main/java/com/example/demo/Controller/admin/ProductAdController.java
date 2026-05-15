@@ -77,9 +77,11 @@ public class ProductAdController {
         product.setDiscount(discount);
         product.setAvailable(available != null ? available : true);
         product.setQuantity(quantity);
-        String imageName = saveImage(imageFile);
-        if (imageName != null) {
-            product.setImage(imageName);
+        if (imageFile != null && !imageFile.isEmpty()) {
+            String imageName = saveImage(imageFile);
+            if (imageName != null) {
+                product.setImage(imageName);
+            }
         }
         product.setDescription(description);
         categoryService.findById(categoryId).ifPresent(product::setCategory);
@@ -173,22 +175,33 @@ public class ProductAdController {
     }
 
     private String saveImage(MultipartFile file) {
-        if (file == null || file.isEmpty()) {
-            return null;
-        }
-        String original = file.getOriginalFilename();
-        String ext = "";
-        if (original != null && original.contains(".")) {
-            ext = original.substring(original.lastIndexOf("."));
-        }
-        String fileName = "product-" + UUID.randomUUID() + ext;
-        Path uploadDir = Path.of("src/main/resources/static/images");
+        if (file == null || file.isEmpty()) return null;
+
         try {
+            String original = file.getOriginalFilename();
+            String ext = "";
+
+            if (original != null && original.contains(".")) {
+                ext = original.substring(original.lastIndexOf("."));
+            }
+
+            String fileName = "product-" + UUID.randomUUID() + ext;
+
+
+            Path uploadDir = Path.of("E:/Website-ban-quan-ao/uploads/images");
+
             Files.createDirectories(uploadDir);
-            Files.write(uploadDir.resolve(fileName), file.getBytes());
+
+            Path filePath = uploadDir.resolve(fileName);
+
+            file.transferTo(filePath.toFile());
+
+            System.out.println("Saved image: " + filePath);
+
             return fileName;
-        } catch (IOException e) {
-            return null;
+
+        } catch (Exception e) {
+            throw new RuntimeException("Upload image failed", e);
         }
     }
 
