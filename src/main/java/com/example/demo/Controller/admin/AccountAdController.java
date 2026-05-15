@@ -96,7 +96,7 @@ public class AccountAdController {
         if (photoName != null) {
             account.setPhoto(photoName);
         }
-        account.setActivated(activated != null ? activated : true);
+        account.setActivated(activated != null ? activated : false);
         Account saved = accountService.update(account);
 
         authorityService.deleteByAccountUsername(username);
