@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,17 +26,17 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Orders> findAll() {
-        return orderRepository.findAll();
+        return orderRepository.findByDeletedFalse();
     }
 
     @Override
     public Optional<Orders> findById(Long id) {
-        return orderRepository.findById(id);
+        return orderRepository.findByIdAndDeletedFalse(id);
     }
 
     @Override
     public List<Orders> findByAccountUsername(String username) {
-        return orderRepository.findByAccountUsernameOrderByCreateDateDesc(username);
+        return orderRepository.findByAccountUsernameAndDeletedFalseOrderByCreateDateDesc(username);
     }
 
     @Override
@@ -96,7 +97,13 @@ public class OrderServiceImpl implements OrderService {
     }
     @Override
     public void deleteById(Long id) {
-        orderRepository.deleteById(id);
+        Orders order = orderRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Không tìm thấy đơn hàng!"));
+
+        order.setDeleted(true);
+        order.setDeletedAt(LocalDateTime.now());
+
+        orderRepository.save(order);
     }
 
     private boolean isPlacedStatus(String status) {

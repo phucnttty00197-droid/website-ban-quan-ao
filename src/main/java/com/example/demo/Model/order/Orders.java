@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.apache.catalina.User;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,13 @@ public class Orders extends BaseEntity {
 
     @Column(length = 20)
     private String status;
+
+    @Column(nullable = false)
+    @Builder.Default
+    private Boolean deleted = false;
+
+    @Column(name = "deleted_at")
+    private LocalDateTime deletedAt;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
