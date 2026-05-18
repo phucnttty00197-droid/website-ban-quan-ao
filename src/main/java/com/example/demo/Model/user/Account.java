@@ -34,6 +34,9 @@ public class Account {
     @Column(name ="activated", nullable = false)
     private Boolean activated;
 
+    @Column(name = "deleted", nullable = false)
+    private Boolean deleted = false;
+
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
@@ -46,6 +49,8 @@ public class Account {
         if (activated == null) {
             activated = true;
         }
+        if (deleted == null)
+            deleted = false;
     }
 
 }

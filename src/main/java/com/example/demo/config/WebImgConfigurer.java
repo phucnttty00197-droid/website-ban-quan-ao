@@ -9,8 +9,10 @@ public class WebImgConfigurer implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/images/**")
-                .addResourceLocations("file:E:/Website-ban-quan-ao/uploads/images/");
+                .addResourceLocations(
+                        "file:///E:/Website-ban-quan-ao/uploads/images/",
+                        "classpath:/static/images/"
+                );
     }
-
 
 }

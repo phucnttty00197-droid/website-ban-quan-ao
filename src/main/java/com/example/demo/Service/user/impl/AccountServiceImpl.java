@@ -1,8 +1,10 @@
 package com.example.demo.Service.user.impl;
 
 import com.example.demo.Model.user.Account;
+import com.example.demo.Service.user.AuthorityService;
 import com.example.demo.repository.user.AccountRepo;
 import com.example.demo.Service.user.AccountService;
+import com.example.demo.repository.user.AuthorityRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,15 +15,16 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AccountServiceImpl implements AccountService {
     private final AccountRepo accountRepo;
+    private final AuthorityService authorityService;
 
     @Override
     public List<Account> findAll(){
-        return accountRepo.findAll();
+        return accountRepo.findAllByDeletedFalse();
     }
 
     @Override
     public Optional<Account> findByUsername(String username){
-        return  accountRepo.findById(username);
+        return accountRepo.findByUsernameAndDeletedFalse(username);
     }
 
     @Override
@@ -41,7 +44,14 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public void deleteByUsername(String username){
-        accountRepo.deleteById(username);
+        Account acc = accountRepo.findById(username)
+                .orElseThrow(() -> new RuntimeException("Không tìm thấy tài khoản!"));
+
+        authorityService.deleteByAccountUsername(username);
+
+        // 2. xóa mềm account
+        acc.setDeleted(true);
+        accountRepo.save(acc);
     }
 
 

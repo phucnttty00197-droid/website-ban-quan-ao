@@ -40,7 +40,7 @@ public class CartController {
         }
         boolean ok = cartService.add(productId, sizeId, 1);
         if (!ok) {
-            session.setAttribute("CART_MESSAGE", "Size đã chọn đã hết hàng hoặc không đủ tồn kho.");
+            session.setAttribute("CART_MESSAGE", "Sản phẩm này hiện đã hết hàng vui lòng chọn sản phẩm khác!");
         }
         return "redirect:/cart/index";
     }

@@ -23,38 +23,41 @@ public class ProductServiceImpl implements ProductsService {
 
     @Override
     public List<Products> findAll() {
-        return productRepository.findAll();
+        return productRepository.findAll()
+                .stream()
+                .filter(product -> !product.getDeleted())
+                .toList();
     }
 
     @Override
     public Page<Products> findAllPage(int page, int size) {
-        Page<Products> products = productRepository.findAll(PageRequest.of(page, size, Sort.by("id").descending()));
+        Page<Products> products = productRepository.findByDeletedFalse(PageRequest.of(page, size, Sort.by("id").descending()));
         attachSizes(products.getContent());
         return products;
     }
 
     @Override
     public Optional<Products> findById(Integer id) {
-        return productRepository.findById(id);
+        return productRepository.findByIdAndDeletedFalse(id);
     }
 
     @Override
     public Optional<Products> findByIdWithSizes(Integer id) {
-        Optional<Products> product = productRepository.findById(id);
+        Optional<Products> product = productRepository.findByIdAndDeletedFalse(id);
         product.ifPresent(this::attachSizes);
         return product;
     }
 
     @Override
     public List<Products> findTop8ByOrderByCreateDateDesc() {
-        List<Products> products = productRepository.findTop8ByOrderByCreateDateDesc();
+        List<Products> products = productRepository.findTop8ByDeletedFalseOrderByCreateDateDesc();
         attachSizes(products);
         return products;
     }
 
     @Override
     public List<Products> findTop8ByDiscountGreaterThanOrderByDiscountDesc(double discount) {
-        List<Products> products = productRepository.findTop8ByDiscountGreaterThanOrderByDiscountDesc(BigDecimal.valueOf(discount));
+        List<Products> products = productRepository.findTop8ByDeletedFalseAndDiscountGreaterThanOrderByDiscountDesc(BigDecimal.valueOf(discount));
         attachSizes(products);
         return products;
     }
@@ -68,21 +71,25 @@ public class ProductServiceImpl implements ProductsService {
 
     @Override
     public List<Products> findByCategoryId(String categoryId) {
-        List<Products> products = productRepository.findByCategoryId(categoryId);
+        List<Products> products = productRepository.findByDeletedFalseAndCategoryId(categoryId);
         attachSizes(products);
         return products;
     }
 
     @Override
     public List<Products> findTop4ByCategoryIdAndIdNot(String categoryId, Integer id) {
-        List<Products> products = productRepository.findTop4ByCategoryIdAndIdNot(categoryId, id);
+        List<Products> products = productRepository.findTop4ByDeletedFalseAndCategoryIdAndIdNot(categoryId, id);
         attachSizes(products);
         return products;
     }
 
     @Override
     public List<Products> findAllWithSizes() {
-        List<Products> products = productRepository.findAll();
+        List<Products> products = productRepository.findAll()
+                .stream()
+                .filter(product -> !product.getDeleted())
+                .toList();
+
         attachSizes(products);
         return products;
     }
@@ -142,7 +149,14 @@ public class ProductServiceImpl implements ProductsService {
 
     @Override
     public void deleteById(Integer id) {
-        productRepository.deleteById(id);
+
+        Products product =
+                productRepository.findById(id).orElse(null);
+
+        if(product != null){
+            product.setDeleted(true);
+            productRepository.save(product);
+        }
     }
 
     private void attachSizes(Products product) {

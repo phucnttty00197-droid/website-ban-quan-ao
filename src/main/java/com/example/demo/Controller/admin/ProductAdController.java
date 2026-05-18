@@ -133,7 +133,8 @@ public class ProductAdController {
                          @RequestParam("categoryId") String categoryId,
                          @RequestParam Map<String, String> params) {
 
-        Products product = productsService.findById(id).orElseGet(Products::new);
+        Products product = productsService.findById(id)
+                .orElseThrow(() -> new RuntimeException("Không tìm thấy sản phẩm!"));
         product.setId(id);
         product.setName(name);
         product.setPrice(price);

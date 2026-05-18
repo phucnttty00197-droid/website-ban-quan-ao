@@ -21,5 +21,13 @@ public interface AuthorityRepo extends JpaRepository<Authority, Long> {
             """)
     List<Authority> findByRoleId(@Param("roleId") String roleId);
 
-    void deleteByAccountUsername(String username);
+    @Query("""
+    select a
+    from Authority a
+    join a.account acc
+    where acc.username = :username
+    and acc.deleted = false
+""")
+    List<Authority> findActiveByAccountUsername(@Param("username") String username);
+
 }

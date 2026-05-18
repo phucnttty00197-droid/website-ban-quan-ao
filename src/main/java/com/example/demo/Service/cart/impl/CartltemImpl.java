@@ -217,6 +217,7 @@ public class CartltemImpl implements CartService {
         if (productSize.isEmpty() || productSize.get().getQuantity() == null || productSize.get().getQuantity() <= 0) {
             return false;
         }
+
         String sizeName = productSize.get().getSize() != null ? productSize.get().getSize().getName() : null;
         for (Cartltem item : items) {
             if (item.getProductId().equals(productId) && item.getSizeId().equals(sizeId)) {
@@ -234,7 +235,12 @@ public class CartltemImpl implements CartService {
         if (productOpt.isEmpty()) {
             return false;
         }
+
         Products product = productOpt.get();
+        if (product.getAvailable() == null || !product.getAvailable()) {
+            return false;
+        }
+
         if (quantity > productSize.get().getQuantity()) {
             return false;
         }
@@ -271,10 +277,22 @@ public class CartltemImpl implements CartService {
         return items;
     }
     private boolean addToUserCart(String username, Integer productId, Integer sizeId, Integer quantity) {
+
+
+
         if (username == null || username.isBlank()) {
             return false;
         }
         if (sizeId == null || quantity == null || quantity <= 0) {
+            return false;
+        }
+        Optional<Products> productOpt = productService.findById(productId);
+        if (productOpt.isEmpty()) {
+            return false;
+        }
+
+        Products product = productOpt.get();
+        if (product.getAvailable() == null || !product.getAvailable()) {
             return false;
         }
         Optional<Product_size> productSize = productSizeService.findByProductIdAndSizeId(productId, sizeId);

@@ -50,7 +50,7 @@
                     <tr th:each="p : ${products}">
                         <td class="product-image-cell">
                             <img class="product-thumb"
-                                 th:src="${#strings.isEmpty(p.image)} ? @{/images/product1.jpg} : @{|/images/${p.image}|}"
+                                 th:src="${p.image != null} ? @{/images/{img}(img=${p.image})} : @{/images/product1.jpg}"
                                  alt="Ảnh sản phẩm">
                         </td>
                         <td th:text="${p.name}">Tên</td>

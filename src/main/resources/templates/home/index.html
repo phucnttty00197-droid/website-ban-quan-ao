@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html  lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -117,7 +117,8 @@
                 <div class="product-grid">
                     <div class="product-card"
                          th:each="p : ${filteredProducts}"
-                         th:with="firstSize=${p.productSizes.?[quantity > 0][0]}"
+                         th:with="sizes=${p.productSizes.?[quantity > 0]},
+         firstSize=${#lists.isEmpty(sizes) ? null : sizes[0]}"
                          th:data-detail-url="@{|/product/detail/${p.id}|}">
                         <div class="product-image-wrap">
                             <div class="product-image-frame">
@@ -191,7 +192,8 @@
                 <div class="product-grid">
                     <div class="product-card"
                          th:each="p : ${newProducts}"
-                         th:with="firstSize=${p.productSizes.?[quantity > 0][0]}"
+                         th:with="sizes=${p.productSizes.?[quantity > 0]},
+         firstSize=${#lists.isEmpty(sizes) ? null : sizes[0]}"
                          th:data-detail-url="@{|/product/detail/${p.id}|}">
                         <div class="product-image-wrap">
                             <div class="product-image-frame">
@@ -251,7 +253,8 @@
                 <div class="product-grid">
                     <div class="product-card"
                          th:each="p : ${discountProducts}"
-                         th:with="firstSize=${p.productSizes.?[quantity > 0][0]}"
+                         th:with="sizes=${p.productSizes.?[quantity > 0]},
+         firstSize=${#lists.isEmpty(sizes) ? null : sizes[0]}"
                          th:data-detail-url="@{|/product/detail/${p.id}|}">
                         <div class="product-image-wrap">
                             <div class="product-image-frame">
@@ -311,7 +314,8 @@
                 <div class="product-grid">
                     <div class="product-card"
                          th:each="p : ${bestSellerProducts}"
-                         th:with="firstSize=${p.productSizes.?[quantity > 0][0]}"
+                         th:with="sizes=${p.productSizes.?[quantity > 0]},
+         firstSize=${#lists.isEmpty(sizes) ? null : sizes[0]}"
                          th:data-detail-url="@{|/product/detail/${p.id}|}">
                         <div class="product-image-wrap">
                             <div class="product-image-frame">

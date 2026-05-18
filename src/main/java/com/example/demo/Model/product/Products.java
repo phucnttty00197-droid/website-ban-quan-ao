@@ -65,4 +65,8 @@ public class Products extends BaseEntity {
     @Column(nullable = false)
     @Builder.Default
     private Boolean available = true;
+
+    @Column(nullable = false)
+    @Builder.Default
+    private Boolean deleted = false;
 }

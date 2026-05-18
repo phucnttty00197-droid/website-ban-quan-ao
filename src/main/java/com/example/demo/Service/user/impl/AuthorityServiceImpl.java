@@ -48,7 +48,8 @@ public class AuthorityServiceImpl implements AuthorityService {
     @Override
     @Transactional
     public void deleteByAccountUsername(String username){
-        authRepo.deleteByAccountUsername(username);
+        List<Authority> list = authRepo.findByAccountUsername(username);
+        authRepo.deleteAll(list);
     }
 
 
