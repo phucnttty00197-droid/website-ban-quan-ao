@@ -20,6 +20,9 @@ public class Categories {
     @Column(length = 100,nullable = false)
     private String name;
 
+    @Column(nullable = false)
+    @Builder.Default
+    private Boolean deleted = false;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude

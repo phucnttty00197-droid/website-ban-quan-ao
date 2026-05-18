@@ -16,12 +16,12 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<Categories> findAll() {
-        return categoryRepository.findAll();
+        return categoryRepository.findByDeletedFalse();
     }
 
     @Override
     public Optional<Categories> findById(String id) {
-        return categoryRepository.findById(id);
+        return categoryRepository.findByIdAndDeletedFalse(id);
     }
 
     @Override
@@ -36,6 +36,13 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void deleteById(String id) {
-        categoryRepository.deleteById(id);
+
+        Optional<Categories> optional = categoryRepository.findById(id);
+
+        if(optional.isPresent()){
+            Categories category = optional.get();
+            category.setDeleted(true);
+            categoryRepository.save(category);
+        }
     }
 }

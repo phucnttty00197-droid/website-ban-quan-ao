@@ -49,10 +49,15 @@ public class CategoryAController {
     @PostMapping("/admin/category/update")
     public String update(@RequestParam("id") String id,
                          @RequestParam("name") String name) {
-        Categories category = new Categories();
-        category.setId(id);
-        category.setName(name);
-        categoryService.update(category);
+        Optional<Categories> optional = categoryService.findById(id);
+
+        if(optional.isPresent()){
+            Categories category = optional.get();
+            category.setName(name);
+
+            categoryService.update(category);
+        }
+
         return "redirect:/admin/category/index";
     }
     @GetMapping("/admin/category/delete/{id}")
