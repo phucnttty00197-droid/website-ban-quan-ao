@@ -29,7 +29,7 @@ public class AuthController {
                          Model model){
         boolean ok = authService.login(username, password);
         if (!ok) {
-            model.addAttribute("message", "Sai tài khoản hoặc mật khẩu!");
+            model.addAttribute("error", "Sai tài khoản hoặc mật khẩu!");
             return "auth/login";
         }
         Object redirect =  session.getAttribute(REDIRECT_AFTER_LOGIN);

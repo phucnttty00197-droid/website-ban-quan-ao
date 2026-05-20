@@ -6,7 +6,7 @@ import com.example.demo.Model.user.Authority;
 import com.example.demo.Model.user.Roles;
 import com.example.demo.Service.auth.AuthService;
 import com.example.demo.Service.user.AccountService;
-
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.demo.Service.user.AuthorityService;
 import com.example.demo.Service.user.RoleService;
 import jakarta.servlet.http.HttpSession;
@@ -45,7 +45,8 @@ public class AccountController {
                          @RequestParam("password") String password,
                          @RequestParam("fullname") String fullname,
                          @RequestParam("email") String email,
-                         Model model) {
+                         Model model,
+                         RedirectAttributes redirectAttributes) {
         if (accountService.findByUsername(username).isPresent()) {
             model.addAttribute("message", "Username đã tồn tại");
             return "account/sign-up";
@@ -67,9 +68,9 @@ public class AccountController {
         auth.setAccount(saved);
         auth.setRole(roles);
         authorityService.create(auth);
-        model.addAttribute("message", "Đăng ký thành công, Vui lòng đăng nhập!");
+        redirectAttributes.addFlashAttribute("message", "Đăng ký thành công, Vui lòng đăng nhập!");
 
-        return "account/sign-up";
+        return "redirect:/auth/login";
     }
 
     @GetMapping("/account/edit-profile")

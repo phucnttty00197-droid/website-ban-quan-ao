@@ -24,8 +24,12 @@
       </div>
       <form th:action="@{/auth/login}" method="post" class="auth-form">
         <h3>Đăng nhập</h3>
-        <div th:if="${message}" class="status-message status-error" th:text="${message}">
-          Lỗi đăng nhập
+        <div th:if="${message}" class="status-message status-success">
+          <span th:text="${message}"></span>
+        </div>
+
+        <div th:if="${error}" class="status-message status-error">
+          <span th:text="${error}"></span>
         </div>
         <div class="form-group">
           <label>Tài khoản</label>
